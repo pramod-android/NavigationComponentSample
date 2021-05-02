@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
+import kotlinx.android.synthetic.main.fragment_second.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +24,8 @@ class SecondFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    val args:SecondFragmentArgs by navArgs()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -37,6 +41,7 @@ class SecondFragment : Fragment() {
         // Inflate the layout for this fragment
         val view= inflater.inflate(R.layout.fragment_second, container, false)
 
+        view.abc.setText(args.number.toString())
         view.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_secondFragment_to_firstFragment)
         }
